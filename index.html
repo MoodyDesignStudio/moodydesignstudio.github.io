@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Moody Design</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family:'Montserrat',sans-serif;
+      background:#050505;
+      color:white;
+      overflow-x:hidden;
+      position:relative;
+    }
+
+    body::before{
+      content:'';
+      position:fixed;
+      inset:0;
+      background-image:url('https://grainy-gradients.vercel.app/noise.svg');
+      opacity:.05;
+      pointer-events:none;
+      z-index:999;
+      mix-blend-mode:screen;
+    }
+
+    .bg-glow-left,
+    .bg-glow-right,
+    .bg-glow-center{
+      position:fixed;
+      filter:blur(60px);
+      z-index:-1;
+      opacity:.75;
+      animation:float 12s ease-in-out infinite;
+    }
+
+    .bg-glow-left{
+      width:350px;
+      height:350px;
+      background:#ff8a00;
+      top:-80px;
+      left:-120px;
+    }
+
+    .bg-glow-right{
+      width:320px;
+      height:600px;
+      background:#ff2f00;
+      right:-160px;
+      top:120px;
+    }
+
+    .bg-glow-center{
+      width:400px;
+      height:300px;
+      background:#ff3c00;
+      top:300px;
+      left:20%;
+      opacity:.45;
+    }
+
+    @keyframes float{
+      0%{
+        transform:translate(0px,0px) scale(1);
+      }
+
+      25%{
+        transform:translate(40px,-20px) scale(1.05);
+      }
+
+      50%{
+        transform:translate(-20px,35px) scale(.95);
+      }
+
+      75%{
+        transform:translate(25px,15px) scale(1.02);
+      }
+
+      100%{
+        transform:translate(0px,0px) scale(1);
+      }
+    }
+
+    header{
+      width:100%;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:25px 22px;
+      position:fixed;
+      top:0;
+      left:0;
+      z-index:100;
+      backdrop-filter:blur(14px);
+      background:rgba(0,0,0,.25);
+      border-bottom:1px solid rgba(255,255,255,.05);
+    }
+
+    .logo{
+      width:170px;
+    }
+
+    .menu-toggle{
+      width:52px;
+      height:52px;
+      border-radius:18px;
+      border:1px solid rgba(255,255,255,.08);
+      background:rgba(255,255,255,.04);
+      backdrop-filter:blur(10px);
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      gap:5px;
+      cursor:pointer;
+      transition:.3s ease;
+    }
+
+    .menu-toggle:hover{
+      border-color:rgba(255,120,0,.35);
+      box-shadow:0 0 30px rgba(255,90,0,.18);
+    }
+
+    .menu-toggle span{
+      width:22px;
+      height:2px;
+      background:white;
+      border-radius:999px;
+    }
+
+    .mobile-menu{
+      position:fixed;
+      top:0;
+      right:-100%;
+      width:82%;
+      max-width:340px;
+      height:100vh;
+      background:rgba(5,5,5,.94);
+      backdrop-filter:blur(22px);
+      z-index:999;
+      padding:120px 28px;
+      transition:.45s ease;
+      border-left:1px solid rgba(255,255,255,.06);
+      display:flex;
+      flex-direction:column;
+      gap:18px;
+    }
+
+    .mobile-menu.active{
+      right:0;
+    }
+
+    .mobile-menu a{
+      text-decoration:none;
+      color:white;
+      font-size:1rem;
+      font-weight:700;
+      letter-spacing:1px;
+      padding:14px 16px;
+      border-radius:16px;
+      background:rgba(255,255,255,.03);
+      border:1px solid rgba(255,255,255,.05);
+      transition:.3s ease;
+    }
+
+    .mobile-menu a:hover{
+      background:rgba(255,90,0,.12);
+      border-color:rgba(255,120,0,.2);
+      transform:translateX(5px);
+    }
+.close-menu{
+  position:absolute;
+  top:28px;
+  right:28px;
+  width:42px;
+  height:42px;
+  border-radius:14px;
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.08);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:1.2rem;
+  cursor:pointer;
+  transition:.3s ease;
+}
+
+.close-menu:hover{
+  background:rgba(255,90,0,.12);
+  border-color:rgba(255,120,0,.25);
+}
+    .hero{
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      padding:140px 24px 90px;
+      position:relative;
+    }
+
+    .hero-tag{
+      color:#ff8a00;
+      font-size:.9rem;
+      letter-spacing:4px;
+      margin-bottom:20px;
+      font-weight:700;
+      text-transform:uppercase;
+    }
+
+    .hero h1{
+      font-size:4rem;
+      line-height:.95;
+      font-weight:900;
+      margin-bottom:25px;
+      text-transform:uppercase;
+      max-width:700px;
+    }
+
+    .hero p{
+      color:#d6d6d6;
+      font-size:1.05rem;
+      line-height:1.8;
+      max-width:520px;
+      margin-bottom:35px;
+    }
+
+    .hero-buttons{
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
+    }
+
+    .btn-primary,
+    .btn-secondary{
+      padding:15px 22px;
+      border-radius:18px;
+      text-decoration:none;
+      font-weight:700;
+      transition:.3s ease;
+      font-size:.95rem;
+    }
+
+    .btn-primary{
+      background:linear-gradient(135deg,#ff8a00,#ff2f00);
+      color:white;
+      box-shadow:0 0 30px rgba(255,80,0,.35);
+    }
+
+    .btn-primary:hover{
+      transform:translateY(-3px);
+      box-shadow:0 0 50px rgba(255,80,0,.5);
+    }
+
+    .btn-secondary{
+      border:1px solid rgba(255,255,255,.12);
+      color:white;
+      background:rgba(255,255,255,.03);
+      backdrop-filter:blur(10px);
+    }
+
+    section{
+      padding:90px 24px;
+      position:relative;
+    }
+
+    .section-title{
+      font-size:2.5rem;
+      font-weight:900;
+      line-height:1;
+      margin-bottom:18px;
+      text-transform:uppercase;
+    }
+
+    .section-text{
+      color:#c8c8c8;
+      line-height:1.9;
+      max-width:720px;
+      margin-bottom:40px;
+    }
+
+    .about-box{
+      background:rgba(255,255,255,.03);
+      border:1px solid rgba(255,255,255,.05);
+      border-radius:28px;
+      padding:30px;
+      backdrop-filter:blur(16px);
+      box-shadow:0 0 50px rgba(255,70,0,.08);
+    }
+
+    .services-grid,
+    .formats-grid,
+    .portfolio-grid{
+      display:grid;
+      gap:20px;
+    }
+
+    .services-grid{
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    }
+
+    .service-card,
+    .format-card,
+    .portfolio-card{
+      background:rgba(255,255,255,.03);
+      border:1px solid rgba(255,255,255,.05);
+      border-radius:28px;
+      overflow:hidden;
+      position:relative;
+      transition:.35s ease;
+      backdrop-filter:blur(10px);
+    }
+
+    .service-card:hover,
+    .format-card:hover,
+    .portfolio-card:hover{
+      transform:translateY(-6px);
+      border-color:rgba(255,120,0,.35);
+      box-shadow:0 0 60px rgba(255,90,0,.15);
+    }
+
+    .service-card{
+      padding:26px;
+      min-height:220px;
+    }
+
+    .service-number{
+      font-size:3rem;
+      font-weight:900;
+      color:rgba(255,120,0,.18);
+      margin-bottom:10px;
+    }
+
+    .service-card h3,
+    .format-card h3{
+      font-size:1.3rem;
+      margin-bottom:12px;
+      text-transform:uppercase;
+    }
+
+    .service-card p,
+    .format-card p{
+      color:#c5c5c5;
+      line-height:1.7;
+      font-size:.95rem;
+    }
+
+    .formats-grid{
+      grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    }
+
+    .format-card{
+      padding:28px;
+    }
+
+    .portfolio-grid{
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    }
+
+    .portfolio-image{
+      width:100%;
+      height:320px;
+      object-fit:cover;
+      display:block;
+    }
+
+    .portfolio-info{
+      padding:22px;
+    }
+
+    .portfolio-info h3{
+      margin-bottom:10px;
+      font-size:1.1rem;
+      text-transform:uppercase;
+    }
+
+    .portfolio-info p{
+      color:#cfcfcf;
+      line-height:1.7;
+      font-size:.92rem;
+    }
+
+    .tag{
+      display:inline-block;
+      margin-top:18px;
+      background:rgba(255,90,0,.12);
+      color:#ff8a00;
+      border:1px solid rgba(255,120,0,.2);
+      padding:10px 14px;
+      border-radius:999px;
+      font-size:.8rem;
+      font-weight:700;
+      cursor:pointer;
+      transition:.3s ease;
+      text-decoration:none;
+    }
+
+    .tag:hover{
+      background:rgba(255,90,0,.2);
+      transform:translateY(-2px);
+    }
+
+    .format-options{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      margin-top:18px;
+      max-height:0;
+      opacity:0;
+      overflow:hidden;
+      transition:all .45s ease;
+    }
+
+    .service-card.active .format-options{
+      max-height:500px;
+      opacity:1;
+    }
+
+    .format-link{
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.05);
+      padding:12px 14px;
+      border-radius:14px;
+      text-decoration:none;
+      color:white;
+      font-size:.88rem;
+      transition:.3s ease;
+    }
+
+    .format-link:hover{
+      background:rgba(255,90,0,.15);
+      border-color:rgba(255,120,0,.25);
+      transform:translateX(5px);
+    }
+
+    .cta{
+      text-align:center;
+      padding-bottom:140px;
+    }
+
+    .cta h2{
+      font-size:3rem;
+      line-height:1;
+      margin-bottom:20px;
+      text-transform:uppercase;
+      font-weight:900;
+    }
+
+    .cta p{
+      color:#cfcfcf;
+      line-height:1.8;
+      max-width:650px;
+      margin:0 auto 35px;
+    }
+
+    .whatsapp-float{
+      position:fixed;
+      right:18px;
+      bottom:18px;
+      z-index:200;
+      width:64px;
+      height:64px;
+      border-radius:50%;
+      background:linear-gradient(135deg,#ff8a00,#ff2f00);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-decoration:none;
+      box-shadow:0 0 40px rgba(255,70,0,.45);
+      animation:pulse 2.2s infinite;
+    }
+
+    .whatsapp-float img{
+      width:34px;
+    }
+
+    @keyframes pulse{
+      0%{transform:scale(1)}
+      50%{transform:scale(1.08)}
+      100%{transform:scale(1)}
+    }
+
+    footer{
+      padding:40px 24px 70px;
+      text-align:center;
+      color:#8f8f8f;
+      font-size:.9rem;
+      border-top:1px solid rgba(255,255,255,.05);
+    }
+
+    @media(max-width:768px){
+
+      .hero h1{
+        font-size:2.8rem;
+      }
+
+      .section-title{
+        font-size:2rem;
+      }
+
+      .cta h2{
+        font-size:2.2rem;
+      }
+
+      .logo{
+        width:145px;
+      }
+
+      .portfolio-image{
+        height:280px;
+      }
+
+    }
+
+  </style>
+</head>
+<body>
+
+  
+
+  <div class="bg-glow-left"></div>
+  <div class="bg-glow-right"></div>
+  <div class="bg-glow-center"></div>
+
+  <header>
+    <img class="logo" src="https://github.com/kalattods23/misaudios/releases/download/test/Moody_20260512_200314_0000-removebg-preview.png" alt="Moody Design Logo">
+      <div class="menu-toggle" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </header>
+
+  <nav class="mobile-menu" id="mobileMenu">
+    <div class="close-menu" onclick="closeMenu()">✕</div>
+    
+    <a href="#about" onclick="toggleMenu()">Sobre Moody</a>
+    <a href="#services" onclick="toggleMenu()">Servicios</a>
+    <a href="#formats" onclick="toggleMenu()">Formatos</a>
+    <a href="#portfolio" onclick="toggleMenu()">Portafolio</a>
+    <a href="https://wa.me/542646110684" target="_blank">WhatsApp</a>
+  </nav>
+
+  <section class="hero">
+
+    <span class="hero-tag">MOODY DESIGN</span>
+
+    <h1>
+      INVITACIONES
+      DIGITALES
+      QUE IMPACTAN.
+    </h1>
+
+    <p>
+      Diseños personalizados para bodas, 15 años, cumpleaños y eventos únicos. Invitaciones creadas para sorprender antes de que el evento empiece.
+    </p>
+
+    <div class="hero-buttons">
+      <a class="btn-primary" href="https://wa.me/542646110684" target="_blank">
+        CONSULTAR POR WHATSAPP
+      </a>
+
+      <a class="btn-secondary" href="#portfolio">
+        VER PORTAFOLIO
+      </a>
+    </div>
+
+  </section>
+
+  <section id="about">
+
+    <h2 class="section-title">
+      SOBRE
+      MOODY
+      DESIGN
+    </h2>
+
+    <p class="section-text">
+  Más de 5 años creando experiencias visuales digitales para eventos. Cada diseño se trabaja de forma personalizada, buscando que cada invitación tenga identidad propia, presencia visual y una estética que conecte con cada ocasión.
+</p>
+
+    <div class="about-box">
+      <p class="section-text">
+        Moody Design combina estética moderna, diseño emocional y formatos interactivos para transformar una invitación en parte del evento. Desde diseños elegantes para bodas hasta propuestas visuales cinematográficas para 15 años y eventos personalizados.
+      </p>
+
+    </div>
+
+  </section>
+
+  <section id="services">
+
+    <h2 class="section-title">
+      SERVICIOS
+    </h2>
+
+    <div class="services-grid">
+
+      <div class="service-card">
+        <div class="service-number">01</div>
+        <h3>15 Años</h3>
+        <p>
+          Invitaciones modernas, elegantes o cinematográficas para fiestas de 15.
+        </p>
+        <div class="tag" onclick="toggleFormats(this)">
+          Consultar por WhatsApp
+        </div>
+
+        <div class="format-options">
+          <a class="format-link" target="_blank" href="https://wa.me/542646110684?text=Hola%20quiero%20consultar%20por%20una%20invitaci%C3%B3n%20de%2015%20a%C3%B1os%20en%20Imagen">
+            Imagen
+          </a>
+
+          <a class="format-link" target="_blank" href="https://wa.me/542646110684?text=Hola%20quiero%20consultar%20por%20una%20invitaci%C3%B3n%20de%2015%20a%C3%B1os%20en%20Video">
+            Video
+          </a>
+
+          <a class="format-link" target="_blank" href="https://wa.me/542646110684?text=Hola%20quiero%20consultar%20por%20una%20invitaci%C3%B3n%20de%2015%20a%C3%B1os%20en%20PDF%20Interactivo">
+            PDF Interactivo
+          </a>
+
+          <a class="format-link" target="_blank" href="https://wa.me/542646110684?text=Hola%20quiero%20consultar%20por%20una%20Web%20Interactiva%20para%2015%20a%C3%B1os">
+            Web Interactiva
+          </a>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-number">02</div>
+        <h3>Bodas</h3>
+        <p>
+          Diseños premium para bodas con formatos interactivos y visuales personalizados.
+        </p>
+        <div class="tag" onclick="toggleFormats(this)">
+          Consultar por WhatsApp
+        </div>
+
+        <div class="format-options">
+          <a class="format-link" target="_blank" href="https://wa.me/542646110684?text=Hola%20quiero%20consultar%20por%20una%20invitaci%C3%B3n%20de%20Boda%20en%20Imagen">
+            Imagen
+          </a>
+
+          <a class="format-link" target="_blank" href="https://wa.me/542646110684?text=Hola%20quiero%20consultar%20por%20una%20invitaci%C3%B3n%20de%20Boda%20en%20Video">
+            Video
+          </a>
+
+          <a class="format-link" target="_blank" href="https://wa.me/542646110684?text=Hola%20quiero%20consultar%20por%20una%20invitaci%C3%B3n%20de%20Boda%20en%20PDF%20Interactivo">
+            PDF Interactivo
+          </a>
+
+          <a class="format-link" target="_blank" href="https://wa.me/542646110684?text=Hola%20quiero%20consultar%20por%20una%20Web%20Interactiva%20para%20Boda">
+            Web Interactiva
+          </a>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-number">03</div>
+        <h3>18 Años</h3>
+        <p>
+          Invitaciones digitales modernas con estilo visual fuerte y adaptable.
+        </p>
+        <div class="tag" onclick="toggleFormats(this)">
+          Consultar por WhatsApp
+        </div>
+
+        <div class="format-options">
+          <a class="format-link" target="_blank" href="https://wa.me/542646110684?text=Hola%20quiero%20consultar%20por%20una%20invitaci%C3%B3n%20de%2018%20a%C3%B1os%20en%20Imagen">
+            Imagen
+          </a>
+
+          <a class="format-link" target="_blank" href="https://wa.me/542646110684?text=Hola%20quiero%20consultar%20por%20una%20invitaci%C3%B3n%20de%2018%20a%C3%B1os%20en%20Video">
+            Video
+          </a>
+
+          <a class="format-link" target="_blank" href="https://wa.me/542646110684?text=Hola%20quiero%20consultar%20por%20una%20invitaci%C3%B3n%20de%2018%20a%C3%B1os%20en%20PDF%20Interactivo">
+            PDF Interactivo
+          </a>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-number">04</div>
+        <h3>Bebés & Infantiles</h3>
+        <p>
+          Invitaciones para baby shower, revelación de sexo, cumpleaños infantiles y celebraciones especiales.
+        </p>
+        <div class="tag" onclick="toggleFormats(this)">
+          Consultar por WhatsApp
+        </div>
+
+        <div class="format-options">
+          <a class="format-link" target="_blank" href="https://wa.me/542646110684?text=Hola%20quiero%20consultar%20por%20una%20invitaci%C3%B3n%20infantil%20o%20baby%20shower%20en%20Imagen">
+            Imagen
+          </a>
+
+          <a class="format-link" target="_blank" href="https://wa.me/542646110684?text=Hola%20quiero%20consultar%20por%20una%20invitaci%C3%B3n%20infantil%20o%20baby%20shower%20en%20Video">
+            Video
+          </a>
+
+          <a class="format-link" target="_blank" href="https://wa.me/542646110684?text=Hola%20quiero%20consultar%20por%20una%20invitaci%C3%B3n%20infantil%20o%20baby%20shower%20en%20PDF%20Interactivo">
+            PDF Interactivo
+          </a>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-number">05</div>
+        <h3>Eventos & Adultos</h3>
+        <p>
+          Invitaciones para cumpleaños de adultos, reuniones, fiestas privadas y eventos personalizados.
+        </p>
+        <div class="tag" onclick="toggleFormats(this)">
+          Consultar por WhatsApp
+        </div>
+
+        <div class="format-options">
+          <a class="format-link" target="_blank" href="https://wa.me/542646110684?text=Hola%20quiero%20consultar%20por%20una%20invitaci%C3%B3n%20para%20evento%20o%20cumplea%C3%B1os%20de%20adultos%20en%20Imagen">
+            Imagen
+          </a>
+
+          <a class="format-link" target="_blank" href="https://wa.me/542646110684?text=Hola%20quiero%20consultar%20por%20una%20invitaci%C3%B3n%20para%20evento%20o%20cumplea%C3%B1os%20de%20adultos%20en%20Video">
+            Video
+          </a>
+
+          <a class="format-link" target="_blank" href="https://wa.me/542646110684?text=Hola%20quiero%20consultar%20por%20una%20invitaci%C3%B3n%20para%20evento%20o%20cumplea%C3%B1os%20de%20adultos%20en%20PDF%20Interactivo">
+            PDF Interactivo
+          </a>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-number">06</div>
+        <h3>Bautismos & Comuniones</h3>
+        <p>
+          Diseños personalizados para bautismos, comuniones y confirmaciones religiosas.
+        </p>
+        <div class="tag" onclick="toggleFormats(this)">
+          Consultar por WhatsApp
+        </div>
+
+        <div class="format-options">
+          <a class="format-link" target="_blank" href="https://wa.me/542646110684?text=Hola%20quiero%20consultar%20por%20una%20invitaci%C3%B3n%20religiosa%20en%20Imagen">
+            Imagen
+          </a>
+
+          <a class="format-link" target="_blank" href="https://wa.me/542646110684?text=Hola%20quiero%20consultar%20por%20una%20invitaci%C3%B3n%20religiosa%20en%20Video">
+            Video
+          </a>
+
+          <a class="format-link" target="_blank" href="https://wa.me/542646110684?text=Hola%20quiero%20consultar%20por%20una%20invitaci%C3%B3n%20religiosa%20en%20PDF%20Interactivo">
+            PDF Interactivo
+          </a>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-number">07</div>
+        <h3>Flyers</h3>
+        <p>
+          Flyers digitales publicitarios para redes sociales, eventos y promociones.
+        </p>
+        <a class="tag" target="_blank" href="https://wa.me/542646110684?text=Hola%20quiero%20consultar%20por%20un%20flyer%20publicitario">
+          Consultar por WhatsApp
+        </a>
+      </div>
+
+    </div>
+
+  </section>
+
+  <section id="formats">
+
+    <h2 class="section-title">
+      FORMATOS
+    </h2>
+
+    <div class="formats-grid">
+
+      <div class="format-card">
+        <h3>Imagen</h3>
+        <p>
+          Formato ideal para compartir rápidamente por WhatsApp o Instagram.
+        </p>
+      </div>
+
+      <div class="format-card">
+        <h3>PDF Interactivo</h3>
+        <p>
+          Invitaciones con botones interactivos, mapas y enlaces personalizados.
+        </p>
+      </div>
+
+      <div class="format-card">
+        <h3>Video</h3>
+        <p>
+          Invitaciones animadas con música y edición visual cinematográfica.
+        </p>
+      </div>
+
+      <div class="format-card">
+        <h3>Web Interactiva</h3>
+        <p>
+          Experiencias web exclusivas para bodas y 15 años con diseño inmersivo.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <section id="portfolio">
+
+    <h2 class="section-title">
+      PORTAFOLIO
+    </h2>
+
+    <p class="section-text">
+      Reemplazá estas imágenes por tus trabajos reales, capturas, videos o previews de invitaciones web.
+    </p>
+
+    <div class="portfolio-grid">
+
+      <div class="portfolio-card">
+        <img class="portfolio-image" src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1200&auto=format&fit=crop" alt="Boda">
+        <div class="portfolio-info">
+          <h3>Invitación Boda Premium</h3>
+          <p>
+            Diseño elegante e interactivo para bodas modernas.
+          </p>
+        </div>
+      </div>
+
+      <div class="portfolio-card">
+        <img class="portfolio-image" src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?q=80&w=1200&auto=format&fit=crop" alt="15 años">
+        <div class="portfolio-info">
+          <h3>15 Años Cinematic</h3>
+          <p>
+            Estética visual moderna con experiencia interactiva.
+          </p>
+        </div>
+      </div>
+
+      <div class="portfolio-card">
+        <img class="portfolio-image" src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=1200&auto=format&fit=crop" alt="18 años">
+        <div class="portfolio-info">
+          <h3>Evento 18 Años</h3>
+          <p>
+            Invitación digital visualmente impactante para redes.
+          </p>
+        </div>
+      </div>
+
+      <div class="portfolio-card">
+        <img class="portfolio-image" src="https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=1200&auto=format&fit=crop" alt="Flyers">
+        <div class="portfolio-info">
+          <h3>Flyer Publicitario</h3>
+          <p>
+            Diseño promocional para eventos y campañas digitales.
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+  <section class="cta">
+
+    <h2>
+      TU EVENTO
+      EMPIEZA DESDE
+      LA INVITACIÓN.
+    </h2>
+
+    <p>
+      Consultá por tu diseño personalizado y transformá tu evento en una experiencia visual desde el primer momento.
+    </p>
+
+    <a class="btn-primary" href="https://wa.me/542646110684" target="_blank">
+      HABLAR POR WHATSAPP
+    </a>
+
+  </section>
+
+  <footer>
+    © 2026 Moody Design — Diseño de invitaciones digitales personalizadas.
+  </footer>
+
+  <a class="whatsapp-float" href="https://wa.me/542646110684" target="_blank">
+    <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
+  </a>
+  
+  <script>
+
+    /* FORMATOS */
+
+    function toggleFormats(element){
+      const card = element.closest('.service-card');
+      card.classList.toggle('active');
+    }
+
+    /* MENÚ */
+
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    function openMenu(){
+      mobileMenu.classList.add('active');
+    }
+
+    function closeMenu(){
+      mobileMenu.classList.remove('active');
+    }
+
+    function toggleMenu(){
+      mobileMenu.classList.toggle('active');
+    }
+
+    /* CERRAR TOCANDO FUERA */
+
+    document.addEventListener('click', function(event){
+
+      const toggle = document.querySelector('.menu-toggle');
+
+      const clickedInsideMenu =
+        mobileMenu.contains(event.target);
+
+      const clickedToggle =
+        toggle.contains(event.target);
+
+      if(
+        mobileMenu.classList.contains('active') &&
+        !clickedInsideMenu &&
+        !clickedToggle
+      ){
+        closeMenu();
+      }
+
+    });
+
+  </script>
+
+</body>
+</html>
+
+</body>
+</html
