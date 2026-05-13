@@ -422,6 +422,38 @@
       overflow:hidden;
       transition:all .45s ease;
     }
+    .portfolio-options{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  margin-top:18px;
+  max-height:0;
+  opacity:0;
+  overflow:hidden;
+  transition:all .45s ease;
+}
+
+.portfolio-card.active .portfolio-options{
+  max-height:500px;
+  opacity:1;
+}
+
+.portfolio-link{
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.05);
+  padding:12px 14px;
+  border-radius:14px;
+  text-decoration:none;
+  color:white;
+  font-size:.88rem;
+  transition:.3s ease;
+}
+
+.portfolio-link:hover{
+  background:rgba(255,90,0,.15);
+  border-color:rgba(255,120,0,.25);
+  transform:translateX(5px);
+}
 
     .service-card.active .format-options{
       max-height:500px;
@@ -593,7 +625,7 @@
 
     <div class="about-box">
       <p class="section-text">
-        Moody Design combina estética moderna, diseño emocional y formatos interactivos para transformar una invitación en parte del evento. Desde diseños elegantes para bodas hasta propuestas visuales cinematográficas para 15 años y eventos personalizados.
+        Moody Design combina estética moderna, diseño emocional y formatos interactivos para transformar una invitación en parte del evento. Desde diseños elegantes para bodas hasta propuestas visuales unicas para 15 años y eventos personalizados.
       </p>
 
     </div>
@@ -612,7 +644,7 @@
         <div class="service-number">01</div>
         <h3>15 Años</h3>
         <p>
-          Invitaciones modernas, elegantes o cinematográficas para fiestas de 15.
+          Invitaciones modernas, elegantes o delicadas para fiestas de 15.
         </p>
         <div class="tag" onclick="toggleFormats(this)">
           Consultar por WhatsApp
@@ -693,7 +725,7 @@
 
       <div class="service-card">
         <div class="service-number">04</div>
-        <h3>Bebés & Infantiles</h3>
+        <h3>Bebés e Infantiles</h3>
         <p>
           Invitaciones para baby shower, revelación de sexo, cumpleaños infantiles y celebraciones especiales.
         </p>
@@ -806,7 +838,7 @@
       <div class="format-card">
         <h3>Video</h3>
         <p>
-          Invitaciones animadas con música y edición visual cinematográfica.
+          Invitaciones animadas con música y edición visual.
         </p>
       </div>
 
@@ -821,61 +853,152 @@
 
   </section>
 
-  <section id="portfolio">
+ <section id="portfolio">
 
-    <h2 class="section-title">
-      PORTAFOLIO
-    </h2>
+  <h2 class="section-title">
+    Portafolio visual
+  </h2>
 
-    <p class="section-text">
-      Reemplazá estas imágenes por tus trabajos reales, capturas, videos o previews de invitaciones web.
+  <p class="section-text">
+    Algunos ejemplos de experiencias digitales, invitaciones interactivas y diseños visuales desarrollados para distintos tipos de eventos.
+  </p>
+
+  <div class="portfolio-grid">
+
+   <div class="portfolio-card">
+
+  <img class="portfolio-image"
+  src="https://github.com/MoodyDesignStudio/moodydesignstudio.github.io/releases/download/Source/boda.jpg"
+  alt="Boda Web">
+
+  <div class="portfolio-info">
+
+    <h3>Bodas</h3>
+
+    <p>
+      Invitación web interactiva para bodas con estética elegante, navegación inmersiva y diseño visual unico.
     </p>
 
-    <div class="portfolio-grid">
+    <div class="tag" onclick="togglePortfolio(this)">
+      VER EXPERIENCIA WEB
+    </div>
 
-      <div class="portfolio-card">
-        <img class="portfolio-image" src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1200&auto=format&fit=crop" alt="Boda">
-        <div class="portfolio-info">
-          <h3>Invitación Boda Premium</h3>
-          <p>
-            Diseño elegante e interactivo para bodas modernas.
-          </p>
-        </div>
-      </div>
+    <div class="portfolio-options">
 
-      <div class="portfolio-card">
-        <img class="portfolio-image" src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?q=80&w=1200&auto=format&fit=crop" alt="15 años">
-        <div class="portfolio-info">
-          <h3>15 Años Cinematic</h3>
-          <p>
-            Estética visual moderna con experiencia interactiva.
-          </p>
-        </div>
-      </div>
+      <a class="portfolio-link" href="#" target="_blank">
+        Muestra 01
+      </a>
 
-      <div class="portfolio-card">
-        <img class="portfolio-image" src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=1200&auto=format&fit=crop" alt="18 años">
-        <div class="portfolio-info">
-          <h3>Evento 18 Años</h3>
-          <p>
-            Invitación digital visualmente impactante para redes.
-          </p>
-        </div>
-      </div>
+      <a class="portfolio-link" href="#" target="_blank">
+        Muestra 02
+      </a>
 
-      <div class="portfolio-card">
-        <img class="portfolio-image" src="https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=1200&auto=format&fit=crop" alt="Flyers">
-        <div class="portfolio-info">
-          <h3>Flyer Publicitario</h3>
-          <p>
-            Diseño promocional para eventos y campañas digitales.
-          </p>
-        </div>
-      </div>
+      <a class="portfolio-link" href="#" target="_blank">
+        Muestra 03
+      </a>
+
+      <a class="portfolio-link" href="#" target="_blank">
+        Muestra 04
+      </a>
 
     </div>
 
-  </section>
+  </div>
+
+</div>
+
+    <div class="portfolio-card">
+      <img class="portfolio-image" src="https://github.com/MoodyDesignStudio/moodydesignstudio.github.io/releases/download/Source/15.jpg" alt="15 Años">
+
+      <div class="portfolio-info">
+        <h3>XV AÑOS</h3>
+
+        <p>
+          Diseño visual para 15 años con identidad moderna, detalles interactivos y estilo editorial claro/oscuro.
+        </p>
+        <div class="tag" onclick="togglePortfolio(this)">
+      VER EXPERIENCIA WEB
+    </div>
+
+    <div class="portfolio-options">
+
+      <a class="portfolio-link" href="#" target="_blank">
+        Muestra 01
+      </a>
+
+      <a class="portfolio-link" href="#" target="_blank">
+        Muestra 02
+      </a>
+
+      <a class="portfolio-link" href="#" target="_blank">
+        Muestra 03
+      </a>
+
+      <a class="portfolio-link" href="#" target="_blank">
+        Muestra 04
+      </a>
+
+    </div>
+      </div>
+    </div>
+
+    <div class="portfolio-card">
+      <img class="portfolio-image" src="https://github.com/MoodyDesignStudio/moodydesignstudio.github.io/releases/download/Source/pdf.jpg" alt="PDF Interactivo">
+
+      <div class="portfolio-info">
+        <h3>PDF interactivo</h3>
+
+        <p>
+          Invitación digital en PDF interactivo con botones, acceso rápido, ubicación y diseño premium adaptable.
+        </p>
+        </a>
+      <div class="tag" onclick="togglePortfolio(this)">
+      ABRIR PDF INTERACTIVO
+    </div>
+
+    <div class="portfolio-options">
+
+      <a class="portfolio-link" href="#" target="_blank">
+        Muestra 01
+      </a>
+
+      <a class="portfolio-link" href="#" target="_blank">
+        Muestra 02
+      </a>
+
+      <a class="portfolio-link" href="#" target="_blank">
+        Muestra 03
+      </a>
+
+      <a class="portfolio-link" href="#" target="_blank">
+        Muestra 04
+      </a>
+
+    </div>
+      
+      </div>
+    </div>
+<!--
+    <div class="portfolio-card">
+      <img class="portfolio-image" src="https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=1200&auto=format&fit=crop" alt="Flyer">
+
+      <div class="portfolio-info">
+        <h3>Event Visuals</h3>
+
+        <p>
+          Flyers e imágenes promocionales diseñadas para eventos, redes sociales y campañas visuales digitales.
+        </p>
+
+        <a class="tag" href="#">
+          VER DISEÑOS
+        </a>
+      </div>
+    </div>
+
+  </div>
+  -->
+
+</section>
 
   <section class="cta">
 
@@ -890,7 +1013,7 @@
     </p>
 
     <a class="btn-primary" href="https://wa.me/542646110684" target="_blank">
-      HABLAR POR WHATSAPP
+      CONSULTA POR WHATSAPP
     </a>
 
   </section>
@@ -905,52 +1028,59 @@
   
   <script>
 
-    /* FORMATOS */
+  /* FORMATOS */
 
-    function toggleFormats(element){
-      const card = element.closest('.service-card');
-      card.classList.toggle('active');
+  function toggleFormats(element){
+    const card = element.closest('.service-card');
+    card.classList.toggle('active');
+  }
+
+  /* PORTFOLIO */
+
+  function togglePortfolio(element){
+    const card = element.closest('.portfolio-card');
+    card.classList.toggle('active');
+  }
+
+  /* MENÚ */
+
+  const mobileMenu = document.getElementById('mobileMenu');
+
+  function openMenu(){
+    mobileMenu.classList.add('active');
+  }
+
+  function closeMenu(){
+    mobileMenu.classList.remove('active');
+  }
+
+  function toggleMenu(){
+    mobileMenu.classList.toggle('active');
+  }
+
+  /* CERRAR TOCANDO FUERA */
+
+  document.addEventListener('click', function(event){
+
+    const toggle = document.querySelector('.menu-toggle');
+
+    const clickedInsideMenu =
+      mobileMenu.contains(event.target);
+
+    const clickedToggle =
+      toggle.contains(event.target);
+
+    if(
+      mobileMenu.classList.contains('active') &&
+      !clickedInsideMenu &&
+      !clickedToggle
+    ){
+      closeMenu();
     }
 
-    /* MENÚ */
+  });
 
-    const mobileMenu = document.getElementById('mobileMenu');
-
-    function openMenu(){
-      mobileMenu.classList.add('active');
-    }
-
-    function closeMenu(){
-      mobileMenu.classList.remove('active');
-    }
-
-    function toggleMenu(){
-      mobileMenu.classList.toggle('active');
-    }
-
-    /* CERRAR TOCANDO FUERA */
-
-    document.addEventListener('click', function(event){
-
-      const toggle = document.querySelector('.menu-toggle');
-
-      const clickedInsideMenu =
-        mobileMenu.contains(event.target);
-
-      const clickedToggle =
-        toggle.contains(event.target);
-
-      if(
-        mobileMenu.classList.contains('active') &&
-        !clickedInsideMenu &&
-        !clickedToggle
-      ){
-        closeMenu();
-      }
-
-    });
-
-  </script>
+</script>
 
 </body>
 </html>
