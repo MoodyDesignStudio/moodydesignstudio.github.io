@@ -45,6 +45,7 @@
       z-index:-1;
       opacity:.75;
       animation:float 12s ease-in-out infinite;
+      will-change: transform;
     }
 
     .bg-glow-left{
@@ -104,7 +105,7 @@
       top:0;
       left:0;
       z-index:100;
-      backdrop-filter:blur(14px);
+      backdrop-filter:blur(10px);
       background:rgba(0,0,0,.25);
       border-bottom:1px solid rgba(255,255,255,.05);
     }
@@ -149,7 +150,7 @@
       max-width:340px;
       height:100vh;
       background:rgba(5,5,5,.94);
-      backdrop-filter:blur(22px);
+      backdrop-filter:blur(16px);
       z-index:999;
       padding:120px 28px;
       transition:.45s ease;
@@ -209,6 +210,7 @@
       justify-content:center;
       padding:140px 24px 90px;
       position:relative;
+      contain: layout style paint;
     }
 
     .hero-tag{
@@ -274,6 +276,7 @@
     section{
       padding:90px 24px;
       position:relative;
+      contain: layout style paint;
     }
 
     .section-title{
@@ -296,7 +299,7 @@
       border:1px solid rgba(255,255,255,.05);
       border-radius:28px;
       padding:30px;
-      backdrop-filter:blur(16px);
+      backdrop-filter:blur(12px);
       box-shadow:0 0 50px rgba(255,70,0,.08);
     }
 
@@ -320,7 +323,7 @@
       overflow:hidden;
       position:relative;
       transition:.35s ease;
-      backdrop-filter:blur(10px);
+      backdrop-filter:blur(8px);
     }
 
     .service-card:hover,
@@ -512,6 +515,7 @@
       text-decoration:none;
       box-shadow:0 0 40px rgba(255,70,0,.45);
       animation:pulse 2.2s infinite;
+      will-change: transform;
     }
 
     .whatsapp-float img{
@@ -867,7 +871,7 @@
 
    <div class="portfolio-card">
 
-  <img class="portfolio-image"
+  <img class="portfolio-image" loading="lazy"
   src="https://github.com/MoodyDesignStudio/moodydesignstudio.github.io/releases/download/Source/boda.jpg"
   alt="Boda Web">
 
@@ -908,7 +912,7 @@
 </div>
 
     <div class="portfolio-card">
-      <img class="portfolio-image" src="https://github.com/MoodyDesignStudio/moodydesignstudio.github.io/releases/download/Source/15.jpg" alt="15 Años">
+      <img class="portfolio-image" loading="lazy" src="https://github.com/MoodyDesignStudio/moodydesignstudio.github.io/releases/download/Source/15.jpg" alt="15 Años">
 
       <div class="portfolio-info">
         <h3>XV AÑOS</h3>
@@ -943,7 +947,7 @@
     </div>
 
     <div class="portfolio-card">
-      <img class="portfolio-image" src="https://github.com/MoodyDesignStudio/moodydesignstudio.github.io/releases/download/Source/pdf.jpg" alt="PDF Interactivo">
+      <img class="portfolio-image" loading="lazy" src="https://github.com/MoodyDesignStudio/moodydesignstudio.github.io/releases/download/Source/pdf.jpg" alt="PDF Interactivo">
 
       <div class="portfolio-info">
         <h3>PDF interactivo</h3>
